@@ -455,7 +455,7 @@ def shows():
       "artist_id": show.artist.id,
       "artist_name": show.artist.name,
       "artist_image_link": show.artist.image_link,
-      "start_time": format_datetime(str(show.start_time))
+      "start_time": show.start_time.strftime('%Y-%m-%d %H:%M:%S')
     })
   return render_template('pages/shows.html', shows=response)
 
