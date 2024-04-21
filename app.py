@@ -48,7 +48,7 @@ class Venue(db.Model):
     shows = db.relationship('Show', backref='venue', lazy='dynamic')
 
     def __repr__(self):
-      return f'<Venue ID: {self.id}, name: {self.name}>'
+      return f'<Venue ID: {self.id}, name: {self.name}, city: {self.city}, state: {self.state}>'
 
 class Artist(db.Model):
     __tablename__ = 'artist'
@@ -67,7 +67,7 @@ class Artist(db.Model):
     shows = db.relationship('Show', backref='artist', lazy='dynamic')
 
     def __repr__(self):
-      return f'<Artist ID: {self.id}, name: {self.name}>'
+      return f'<Venue ID: {self.id}, name: {self.name}, city: {self.city}, state: {self.state}>'
   
 class Show(db.Model):
   __tablename__ = 'show'
