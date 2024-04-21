@@ -110,7 +110,7 @@ def index():
 @app.route('/venues')
 def venues():
   venues = Venue.query.all()
-  now = datetime.now()
+  current_time = datetime.now()
 
   cities_states = set()
   for venue in venues:
@@ -125,7 +125,7 @@ def venues():
         number_of_upcomming = 0
         shows = venue.shows
         for show in shows:
-          if(show.start_time > now):
+          if(show.start_time > current_time):
             number_of_upcomming = number_of_upcomming + 1
 
         list_venues.append({
@@ -150,7 +150,7 @@ def search_venues():
 
   rs = []
   for venue in venues:
-    shows = Show.query.filter_by(venue_id=venue.id).all()
+    shows = venue.shows
     num_upcoming_shows = 0
     for show in shows:
       if show.start_time > current_time:
@@ -315,7 +315,7 @@ def search_artists():
 
   rs = []
   for artist in artists:
-    shows = Show.query.filter_by(artist_id=artist.id).all()
+    shows = artist.shows
     num_upcoming_shows = 0
     for show in shows:
       if show.start_time > current_time:
